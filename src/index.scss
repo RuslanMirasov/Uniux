@@ -100,10 +100,13 @@ img {
 //CUSTOM SCROLLBAR
 .custom-scrollbar {
   -webkit-overflow-scrolling: touch;
+  position: relative;
 }
 
+/* Scrollbar styles */
 .custom-scrollbar::-webkit-scrollbar {
   width: 6px; /* scrollbar width */
+  height: 6px; /* scrollbar height */
 }
 
 .custom-scrollbar::-webkit-scrollbar-thumb {
@@ -112,7 +115,7 @@ img {
 }
 
 .custom-scrollbar::-webkit-scrollbar-track {
-  background-color: regba(0, 0, 0, 0); /* track background */
+  background-color: rgba(0, 0, 0, 0); /* track background */
   border-radius: 6px;
 }
 

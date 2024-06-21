@@ -22,7 +22,7 @@ export const ProjectProvider = ({ children }) => {
       try {
         const allTasks = await tasksOperations.getAll({ project: project_id });
         const currentProject = await projectOperation.getById(project_id);
-        setTasks(allTasks.data);
+        setTasks(allTasks);
         setProject(currentProject);
       } catch (error) {
         setError(error);

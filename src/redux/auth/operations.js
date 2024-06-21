@@ -49,7 +49,6 @@ export const refreshUser = createAsyncThunk('auth/current', async (_, thunkAPI) 
     const res = await axios.get('/auth/current');
     return res.data;
   } catch (error) {
-    console.log('Поймали ошибку в redux/auth/operations/refreshUser');
     return thunkAPI.rejectWithValue(error.response.data.message);
   }
 });

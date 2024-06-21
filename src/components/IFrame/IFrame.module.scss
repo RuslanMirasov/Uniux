@@ -5,14 +5,16 @@
   flex-direction: column;
   justify-content: space-between;
   width: 382px;
-  height: 100%;
-  max-height: 812px;
+  height: 760px;
   border: 3px solid var(--black);
   border-radius: 44px;
   overflow: hidden;
+  flex-shrink: 0;
+
   z-index: 1;
   background: var(--sidebar);
   box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.8), 0px 10px 24px 0px rgba(0, 0, 0, 0.6), 0px 0px 0.5px 0px rgba(0, 0, 0, 0.4);
+  margin: auto;
 }
 
 .IFrame {
@@ -20,7 +22,7 @@
   position: relative;
   overflow: hidden;
   transition: opacity 1s;
-  opacity: 0.5;
+  opacity: 0;
   &.Visible {
     opacity: 1;
   }

@@ -1,0 +1,12 @@
+.UserFace {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  width: 130px;
+  height: 185px;
+  border-radius: 20px;
+  border: 1px solid red;
+  flex-shrink: 0;
+}

@@ -7,7 +7,7 @@ const ProjectBody = () => {
   const { project } = useProject();
   const { link } = project;
   return (
-    <div className={css.ProjectBody}>
+    <div className={`${css.ProjectBody} custom-scrollbar`}>
       <Logo position="right" />
       <IFrame link={link} />
     </div>

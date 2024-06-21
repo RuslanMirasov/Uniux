@@ -3,7 +3,7 @@ import { AddTaskForm } from 'components/Forms';
 import { tasksOperations } from 'api';
 import { TasksCollection } from '..';
 
-const TasksWrapper = ({ project, setHasTasks }) => {
+const TasksWrapper = ({ project }) => {
   const [tasks, setTasks] = useState([]);
   const [tasksCount, setTasksCount] = useState(0);
   const { _id } = project;
@@ -15,15 +15,13 @@ const TasksWrapper = ({ project, setHasTasks }) => {
       const allTasks = await tasksOperations.getAll({ project: _id });
       setTasks(allTasks);
       setTasksCount(allTasks.length);
-      setHasTasks(allTasks.length > 0);
     };
     fetchTasks();
-  }, [_id, setHasTasks]);
+  }, [_id]);
 
   const handleAddTask = newTask => {
     setTasks(prev => [...prev, newTask]);
     setTasksCount(prev => prev + 1);
-    setHasTasks(true);
   };
 
   return (
