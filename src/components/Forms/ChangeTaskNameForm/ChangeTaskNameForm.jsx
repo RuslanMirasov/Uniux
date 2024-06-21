@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import css from './ChangeTaskNameForm.module.scss';
-import { TasksOperations } from 'api';
+import { tasksOperations } from 'api';
 
 const ChangeTaskNameForm = ({ taskId, value }) => {
   const [taskName, setTaskName] = useState(value);
@@ -10,7 +10,7 @@ const ChangeTaskNameForm = ({ taskId, value }) => {
   const updateName = async name => {
     setLoading(true);
     try {
-      await TasksOperations.updateTask(taskId, 'name', { name: name });
+      await tasksOperations.updateTask(taskId, 'name', { name: name });
     } catch (error) {
       console.log(error);
     } finally {

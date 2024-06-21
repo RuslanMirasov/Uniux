@@ -8,8 +8,10 @@ import { TasksWrapper } from 'components/Tasks';
 import { CopyLink } from 'components/Forms';
 import { InputCheckbox } from 'components/Forms/InputTypes';
 import getTestUrl from 'utils/getTestUrl';
+import { useProject } from 'hooks';
 
-const ProjectSidebar = ({ project = {} }) => {
+const ProjectSidebar = () => {
+  const { project } = useProject();
   const { _id, name, owner } = project;
   const { user, isLoggedIn } = useAuth();
   const [isOwner, setIsOwner] = useState(false);

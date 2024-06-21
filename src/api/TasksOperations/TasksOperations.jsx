@@ -25,10 +25,10 @@ const updateTask = async (id, field, params) => {
   return response.data;
 };
 
-const TasksOperations = {
+const tasksOperations = {
   getAll,
   addNew,
   updateTask,
 };
 
-export default TasksOperations;
+export default tasksOperations;

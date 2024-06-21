@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { AddTaskForm } from 'components/Forms';
-import { TasksOperations } from 'api';
+import { tasksOperations } from 'api';
 import { TasksCollection } from '..';
 
 const TasksWrapper = ({ project, setHasTasks }) => {
@@ -12,7 +12,7 @@ const TasksWrapper = ({ project, setHasTasks }) => {
 
   useEffect(() => {
     const fetchTasks = async () => {
-      const allTasks = await TasksOperations.getAll({ project: _id });
+      const allTasks = await tasksOperations.getAll({ project: _id });
       setTasks(allTasks);
       setTasksCount(allTasks.length);
       setHasTasks(allTasks.length > 0);

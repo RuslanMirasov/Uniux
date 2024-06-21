@@ -3,7 +3,7 @@ import { ChangeTaskNameForm, CopyLink, Fieldset } from 'components/Forms';
 import { InputRadio, InputText } from 'components/Forms/InputTypes';
 import { Text } from 'components/Typography';
 import { useState } from 'react';
-import { TasksOperations } from 'api';
+import { tasksOperations } from 'api';
 import { validateInput } from 'utils/formFunctions';
 import css from './TaskSingle.module.scss';
 import { debounce } from 'utils/debounce';
@@ -38,7 +38,7 @@ const TaskSingle = ({ task }) => {
   const update = async (name, value) => {
     setLoading(true);
     try {
-      await TasksOperations.updateTask(_id, name, { [name]: value.trim().replace(/\s+/g, ' ') });
+      await tasksOperations.updateTask(_id, name, { [name]: value.trim().replace(/\s+/g, ' ') });
     } catch (error) {
       console.log(error);
     } finally {

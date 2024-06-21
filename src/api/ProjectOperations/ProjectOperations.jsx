@@ -5,12 +5,8 @@ axios.defaults.baseURL = `${BASE_URL}api/`;
 
 //-------------- GET ALL PROJECTS ------------------------
 const getAll = async (page, limit, searchQuery, sort) => {
-  try {
-    const response = await axios.get(`projects?page=${page}&limit=${limit}&q=${searchQuery}&sort=${sort}`);
-    return response.data;
-  } catch (error) {
-    return []; // Возвращаем пустой массив в случае ошибки
-  }
+  const response = await axios.get(`projects?page=${page}&limit=${limit}&q=${searchQuery}&sort=${sort}`);
+  return response.data;
 };
 
 //-------------- GET PROJECT BY ID ------------------------

@@ -103,17 +103,17 @@ img {
 }
 
 .custom-scrollbar::-webkit-scrollbar {
-  width: 4px; /* scrollbar width */
+  width: 6px; /* scrollbar width */
 }
 
 .custom-scrollbar::-webkit-scrollbar-thumb {
-  background-color: var(--scrollbar); /* color of thumb */
-  border-radius: 4px;
+  background-color: var(--scrollbar); /* color of thumb var(--scrollbar)*/
+  border-radius: 6px;
 }
 
 .custom-scrollbar::-webkit-scrollbar-track {
-  background-color: rgba(0, 0, 0, 0); /* track background */
-  border-radius: 4px;
+  background-color: regba(0, 0, 0, 0); /* track background */
+  border-radius: 6px;
 }
 
 .disabled {

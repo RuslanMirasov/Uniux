@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { TasksOperations } from 'api';
+import { tasksOperations } from 'api';
 import { Button } from 'components/Buttons';
 import css from './AddTaskForm.module.scss';
 
@@ -18,7 +18,7 @@ const AddTaskForm = ({ number, projectId, onNewTaskAdd }) => {
         target: `${window.location.href}#Task${Number(number + 1)}_done`,
         description: '',
       };
-      const newTask = await TasksOperations.addNew(newData);
+      const newTask = await tasksOperations.addNew(newData);
       onNewTaskAdd(newTask);
     } catch (error) {
       console.log(error);
