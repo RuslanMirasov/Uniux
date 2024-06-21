@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/Uniux/static/css/main.c856d26b.css",
-    "main.js": "/Uniux/static/js/main.d23b36e5.js",
+    "main.css": "/Uniux/static/css/main.477a6a0e.css",
+    "main.js": "/Uniux/static/js/main.3451c4d4.js",
     "static/css/210.8c22b4d2.chunk.css": "/Uniux/static/css/210.8c22b4d2.chunk.css",
-    "static/js/210.06794f5e.chunk.js": "/Uniux/static/js/210.06794f5e.chunk.js",
+    "static/js/210.0323a5f8.chunk.js": "/Uniux/static/js/210.0323a5f8.chunk.js",
     "static/css/84.6b049424.chunk.css": "/Uniux/static/css/84.6b049424.chunk.css",
     "static/js/84.ac4a1a36.chunk.js": "/Uniux/static/js/84.ac4a1a36.chunk.js",
-    "static/css/791.b179b3fb.chunk.css": "/Uniux/static/css/791.b179b3fb.chunk.css",
-    "static/js/791.b9184480.chunk.js": "/Uniux/static/js/791.b9184480.chunk.js",
+    "static/css/791.b12d1e95.chunk.css": "/Uniux/static/css/791.b12d1e95.chunk.css",
+    "static/js/791.e7ba8f5c.chunk.js": "/Uniux/static/js/791.e7ba8f5c.chunk.js",
     "static/css/414.3b838639.chunk.css": "/Uniux/static/css/414.3b838639.chunk.css",
     "static/js/414.9795a240.chunk.js": "/Uniux/static/js/414.9795a240.chunk.js",
     "static/css/94.3b838639.chunk.css": "/Uniux/static/css/94.3b838639.chunk.css",
@@ -18,7 +18,7 @@
     "static/js/645.2285eab6.chunk.js": "/Uniux/static/js/645.2285eab6.chunk.js",
     "static/css/778.b2a96830.chunk.css": "/Uniux/static/css/778.b2a96830.chunk.css",
     "static/js/778.469fe22a.chunk.js": "/Uniux/static/js/778.469fe22a.chunk.js",
-    "static/js/131.682b4b8e.chunk.js": "/Uniux/static/js/131.682b4b8e.chunk.js",
+    "static/js/131.e1ace99c.chunk.js": "/Uniux/static/js/131.e1ace99c.chunk.js",
     "static/media/subset-Involve-Bold.ttf": "/Uniux/static/media/subset-Involve-Bold.d22fd2efbee0eb1767bc.ttf",
     "static/media/subset-Involve-SemiBold.ttf": "/Uniux/static/media/subset-Involve-SemiBold.c272fb3db22f5233dd10.ttf",
     "static/media/subset-Involve-Medium.ttf": "/Uniux/static/media/subset-Involve-Medium.02e1bd7e6c87a3d4ba56.ttf",
@@ -32,14 +32,14 @@
     "static/media/iframe_top.svg": "/Uniux/static/media/iframe_top.b40d2d70ea00c7ab20a833ca8ccb4532.svg",
     "static/media/IF_bottom_small.svg": "/Uniux/static/media/IF_bottom_small.26dc8d1e94576c2d1ebe839c0a7fff3e.svg",
     "index.html": "/Uniux/index.html",
-    "main.c856d26b.css.map": "/Uniux/static/css/main.c856d26b.css.map",
-    "main.d23b36e5.js.map": "/Uniux/static/js/main.d23b36e5.js.map",
+    "main.477a6a0e.css.map": "/Uniux/static/css/main.477a6a0e.css.map",
+    "main.3451c4d4.js.map": "/Uniux/static/js/main.3451c4d4.js.map",
     "210.8c22b4d2.chunk.css.map": "/Uniux/static/css/210.8c22b4d2.chunk.css.map",
-    "210.06794f5e.chunk.js.map": "/Uniux/static/js/210.06794f5e.chunk.js.map",
+    "210.0323a5f8.chunk.js.map": "/Uniux/static/js/210.0323a5f8.chunk.js.map",
     "84.6b049424.chunk.css.map": "/Uniux/static/css/84.6b049424.chunk.css.map",
     "84.ac4a1a36.chunk.js.map": "/Uniux/static/js/84.ac4a1a36.chunk.js.map",
-    "791.b179b3fb.chunk.css.map": "/Uniux/static/css/791.b179b3fb.chunk.css.map",
-    "791.b9184480.chunk.js.map": "/Uniux/static/js/791.b9184480.chunk.js.map",
+    "791.b12d1e95.chunk.css.map": "/Uniux/static/css/791.b12d1e95.chunk.css.map",
+    "791.e7ba8f5c.chunk.js.map": "/Uniux/static/js/791.e7ba8f5c.chunk.js.map",
     "414.3b838639.chunk.css.map": "/Uniux/static/css/414.3b838639.chunk.css.map",
     "414.9795a240.chunk.js.map": "/Uniux/static/js/414.9795a240.chunk.js.map",
     "94.3b838639.chunk.css.map": "/Uniux/static/css/94.3b838639.chunk.css.map",
@@ -50,10 +50,10 @@
     "645.2285eab6.chunk.js.map": "/Uniux/static/js/645.2285eab6.chunk.js.map",
     "778.b2a96830.chunk.css.map": "/Uniux/static/css/778.b2a96830.chunk.css.map",
     "778.469fe22a.chunk.js.map": "/Uniux/static/js/778.469fe22a.chunk.js.map",
-    "131.682b4b8e.chunk.js.map": "/Uniux/static/js/131.682b4b8e.chunk.js.map"
+    "131.e1ace99c.chunk.js.map": "/Uniux/static/js/131.e1ace99c.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.c856d26b.css",
-    "static/js/main.d23b36e5.js"
+    "static/css/main.477a6a0e.css",
+    "static/js/main.3451c4d4.js"
   ]
 }
