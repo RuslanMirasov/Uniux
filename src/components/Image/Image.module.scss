@@ -1,0 +1,40 @@
+.Image {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  img {
+    opacity: 1;
+  }
+  &.Loading {
+    img {
+      opacity: 0;
+    }
+    &:before {
+      content: '';
+      position: absolute;
+      width: 30px;
+      height: 30px;
+      border-radius: 30px;
+      border-left: 1px solid rgba(0, 0, 0, 0);
+      border-top: 1px solid rgba(0, 0, 0, 0);
+      border-bottom: 1px solid var(--white);
+      border-right: 1px solid var(--white);
+      animation: rotate 0.4s linear infinite;
+    }
+  }
+}
+
+//ANIMATIONS
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}

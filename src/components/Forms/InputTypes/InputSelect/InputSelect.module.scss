@@ -1,0 +1,167 @@
+.Label {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  justify-content: flex-start;
+  align-items: center;
+  position: relative;
+  z-index: 1;
+  &.open {
+    z-index: 5;
+    .SelectArrow {
+      svg {
+        transform: rotate(180deg);
+      }
+    }
+  }
+  .LabelText {
+    display: block;
+    width: 100%;
+    color: var(--white);
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 1.3;
+  }
+  .LabelInput {
+    display: flex;
+    position: relative;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+  }
+}
+
+.InputSelect {
+  display: inline-flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  align-items: center;
+  align-content: center;
+  height: 24px;
+}
+
+.SelectArrow {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  position: relative;
+  width: 12px;
+  height: 12px;
+  margin-left: 4px;
+  cursor: pointer;
+  svg {
+    position: relative;
+    transition: var(--cubic);
+    transform: rotate(0deg);
+    width: 70%;
+  }
+}
+
+div.Input {
+  cursor: pointer;
+}
+
+.Placeholder {
+  color: var(--white);
+  border: none;
+  font-size: 12px;
+  font-family: inherit;
+  opacity: 1;
+  transition: var(--cubic);
+  cursor: pointer;
+}
+
+/*Select*/
+
+.Options {
+  display: flex;
+  flex-wrap: wrap;
+  height: auto;
+  position: absolute;
+  right: 0px;
+  top: 120%;
+  width: 140px;
+  background: var(--select);
+  border: 1px solid var(--grey-dark);
+  border-radius: 8px;
+  transition: var(--cubic);
+  visibility: hidden;
+  opacity: 0;
+  pointer-events: none;
+  transform: translate(0px, 10px);
+  z-index: 5;
+  &:before {
+    content: '';
+    display: block;
+    width: 8px;
+    height: 8px;
+    position: absolute;
+    right: 15px;
+    top: -5px;
+    background: var(--select);
+    border-top: 1px solid var(--grey-dark);
+    border-right: 1px solid var(--grey-dark);
+    transform: rotate(-45deg);
+  }
+  &.open {
+    visibility: visible;
+    opacity: 1;
+    pointer-events: all;
+    transform: translate(0px, 0px);
+  }
+  ul {
+    display: flex;
+    flex-wrap: wrap;
+    height: auto;
+    width: 100%;
+    padding: 8px 0px;
+    hr {
+      display: block;
+      width: 100%;
+      height: 1px;
+      background: var(--grey-dark);
+      margin: 6px 0px;
+      border: none;
+      outline: none;
+    }
+    li {
+      width: 100%;
+      font-size: 12px;
+      line-height: 1.3;
+      padding: 4px 14px 4px 34px;
+      position: relative;
+      background: rgba(0, 0, 0, 0);
+      cursor: pointer;
+      &.Disabled {
+        opacity: 0.3;
+        user-select: none;
+        pointer-events: none;
+        cursor: auto;
+        &:hover {
+          background: rgba(0, 0, 0, 0);
+        }
+      }
+      &.Checked {
+        &:before {
+          content: '';
+          display: block;
+          position: absolute;
+          width: 6px;
+          height: 3px;
+          border-bottom: 1px solid var(--white);
+          border-left: 1px solid var(--white);
+          left: 15px;
+          top: 50%;
+          margin-top: -4px;
+          transform: rotate(-45deg);
+        }
+      }
+      &:hover {
+        background: var(--color);
+      }
+    }
+  }
+}

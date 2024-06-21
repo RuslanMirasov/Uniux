@@ -1,0 +1,27 @@
+$form_gap: 18px 18px;
+$form_gap_tablet: 18px 18px;
+$form_gap_mobil: 18px 18px;
+
+.Form {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  justify-content: flex-start;
+  align-items: center;
+  text-align: left;
+  transition: var(--cubic);
+
+  &.Freeze {
+    pointer-events: none;
+  }
+
+  @media screen and (min-width: 1280px) {
+    gap: $form_gap;
+  }
+  @media screen and (min-width: 768px) and (max-width: 1279px) {
+    gap: $form_gap_tablet;
+  }
+  @media screen and (max-width: 767px) {
+    gap: $form_gap_mobil;
+  }
+}

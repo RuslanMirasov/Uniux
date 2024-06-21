@@ -1,0 +1,11 @@
+.HomeHeader {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  align-items: center;
+  align-content: center;
+  border-bottom: 1px solid var(--grey-dark);
+  text-align: right;
+  padding: 0px 30px;
+  height: 50px;
+}

@@ -1,0 +1,93 @@
+.RadioWrapper {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  justify-content: flex-start;
+  align-items: center;
+  position: relative;
+}
+
+.Radio {
+  display: none;
+}
+
+.RadioLabel {
+  position: relative;
+  padding: 2px;
+  padding-left: 30px;
+  font-family: inherit;
+  font-size: 14px;
+  line-height: 1.33;
+  cursor: pointer;
+  z-index: 2;
+  transition: var(--cubic);
+  user-select: none;
+  &:focus {
+    opacity: 1;
+    ~ {
+      .mark-radio,
+      .mark-checkbox {
+        border: 2px solid var(--grey);
+      }
+    }
+  }
+}
+
+.Mark {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  width: 20px;
+  height: 20px;
+  border: 2px solid var(--grey-dark);
+  position: absolute;
+  left: 0px;
+  top: 1px;
+  z-index: 1;
+  transition: var(--cubic);
+  &.mark-radio {
+    border-radius: 20px;
+    &:before {
+      content: '';
+      display: block;
+      position: relative;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      transition: var(--cubic);
+      background: var(--color);
+      transform: scale(0);
+    }
+  }
+  &.mark-checkbox {
+    border-radius: 5px;
+    &:before {
+      content: '';
+      display: block;
+      position: relative;
+      width: 8px;
+      height: 4px;
+      border-left: 3px solid #fff;
+      border-bottom: 3px solid #fff;
+      transition: var(--cubic);
+      transform: scale(0) rotate(-48deg) translate(0px, 0px);
+    }
+  }
+}
+
+.Radio:checked ~ {
+  .mark-radio {
+    border: 2px solid var(--color);
+    &:before {
+      transform: scale(1);
+    }
+  }
+  .mark-checkbox {
+    border: 2px solid var(--color);
+    background: var(--color);
+    &:before {
+      transform: scale(1) rotate(-48deg) translate(1.2px, -1.2px);
+    }
+  }
+}

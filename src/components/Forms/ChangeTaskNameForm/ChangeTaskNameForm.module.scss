@@ -1,0 +1,55 @@
+.ChangeTaskNameForm {
+  flex: 1;
+  display: flex;
+  flex-wrap: wrap;
+  align-content: center;
+  justify-content: flex-start;
+  align-items: center;
+  width: 100%;
+  position: relative;
+  form {
+    width: 100%;
+  }
+  input {
+    width: 100%;
+    background: none;
+    border: none;
+    color: var(--white);
+    user-select: none;
+    outline: none;
+    background: none;
+    height: 30px;
+  }
+  &:before {
+    content: none;
+    display: block;
+    position: absolute;
+    right: 100%;
+    margin-right: 10px;
+    border-radius: 12px;
+    width: 15px;
+    height: 15px;
+    background: var(--sidebar);
+    border-left: 1px solid var(--white);
+    border-top: 1px solid var(--white);
+    border-bottom: 1px solid var(--sidebar);
+    border-right: 1px solid var(--sidebar);
+    animation: roll 0.4s linear infinite;
+    opacity: 0;
+  }
+  &.Loading {
+    &:before {
+      content: '';
+      opacity: 1;
+    }
+  }
+}
+//ANIMATIONS
+@keyframes roll {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}

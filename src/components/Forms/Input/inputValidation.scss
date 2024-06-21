@@ -1,0 +1,61 @@
+//FORM VALIDATION
+$input_border_invalid: 2px solid var(--error);
+$input_border_valid: 2px solid var(--grey-dark);
+
+$error_font_size: 12px;
+$error_padding_top: 6px;
+
+.labelError {
+  display: flex;
+  width: 100% !important;
+  height: auto;
+  position: relative;
+  transform: translate(20px, 0px);
+  will-change: transform;
+  justify-content: flex-start;
+  align-items: flex-end;
+  overflow: hidden;
+  font-size: $error_font_size;
+  font-weight: inherit;
+  line-height: 1.2;
+  color: var(--error);
+  padding-top: $error_padding_top;
+  opacity: 0;
+  transition: var(--cubic);
+
+  &.active {
+    opacity: 1;
+    transform: translate(0px, 0px);
+  }
+}
+
+input,
+textarea {
+  &.valid {
+    border: $input_border_valid;
+    color: var(--text-color);
+  }
+  &.invalid {
+    border: $input_border_invalid;
+    color: inherit;
+  }
+}
+
+input[type='radio'],
+input[type='checkbox'] {
+  &.invalid {
+    ~ div {
+      border: $input_border_invalid;
+    }
+  }
+}
+
+input::-webkit-autofill,
+input::autofill {
+  background: rgba(0, 0, 0, 0) !important;
+  background-color: rgba(0, 0, 0, 0) !important;
+  color: #ffffff !important;
+  -webkit-box-shadow: none !important;
+  box-shadow: none !important;
+  transition: var(--cubic);
+}

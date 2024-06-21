@@ -1,0 +1,18 @@
+.ProjectsCollection {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-items: flex-start;
+  width: 100%;
+  height: auto;
+  gap: 40px 30px;
+}
+
+.LoadMore {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  margin: 30px auto;
+}

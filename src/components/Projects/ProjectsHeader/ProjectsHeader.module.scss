@@ -1,0 +1,10 @@
+.ProjectsHeader {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  height: 64px;
+  background: var(--sidebar);
+  justify-content: space-between;
+  align-items: center;
+  align-content: center;
+}

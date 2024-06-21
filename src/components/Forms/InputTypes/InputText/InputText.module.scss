@@ -1,0 +1,132 @@
+//text
+$input_color: var(--white);
+$input_height: 50px;
+$input_font_size: 14px;
+$input_padding: 0px 20px;
+$input_background: rgba(0, 0, 0, 0);
+$placeholder_color: var(--grey);
+
+//border
+$input_border: 2px solid var(--grey-dark);
+$input_border_radius: 5px;
+$input_border_focus: 2px solid var(--white);
+
+.Label {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  justify-content: flex-start;
+  align-items: center;
+  position: relative;
+  z-index: 1;
+  &.open {
+    z-index: 5;
+    .SelectArrow {
+      svg {
+        transform: rotate(180deg);
+      }
+    }
+  }
+  .LabelText {
+    display: block;
+    width: 100%;
+    margin-bottom: 8px;
+    color: var(--white);
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 18px; /* 128.571% */
+  }
+  .LabelInput {
+    display: flex;
+    position: relative;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+  }
+}
+
+.Input {
+  width: 100%;
+  height: $input_height;
+  position: relative;
+  padding: $input_padding;
+  border-radius: $input_border_radius;
+  border: $input_border;
+  user-select: none;
+  transition: var(--cubic);
+  background: $input_background;
+  outline: none;
+  font-size: $input_font_size;
+  color: $input_color;
+  &:disabled {
+    pointer-events: none;
+    opacity: 0.3;
+  }
+  &::placeholder {
+    color: $placeholder_color;
+    font-size: inherit;
+    font-family: inherit;
+    opacity: 1;
+    transition: var(--cubic);
+  }
+
+  &:focus {
+    border: $input_border_focus;
+    &::placeholder {
+      opacity: 0;
+    }
+  }
+  .SelectArrow {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    width: 12px;
+    height: 12px;
+    margin-top: -10px;
+    svg {
+      position: relative;
+      transition: var(--cubic);
+      transform: rotate(0deg);
+      width: 70%;
+    }
+  }
+}
+
+div.Input {
+  cursor: pointer;
+}
+
+.Textarea {
+  height: 150px;
+  resize: none;
+  font-family: inherit;
+}
+
+.InputText {
+  font-size: $input_font_size;
+  color: inherit;
+}
+
+.Placeholder {
+  color: rgb(163, 163, 163);
+  font-size: inherit;
+  font-family: inherit;
+  opacity: 1;
+  transition: var(--cubic);
+}
+
+input.Input:-webkit-autofill,
+input.Input:autofill {
+  background: $input_background !important;
+  background-color: $input_background !important;
+  color: $input_color !important;
+  -webkit-box-shadow: none !important;
+  box-shadow: none !important;
+  transition: var(--cubic);
+}

@@ -1,0 +1,77 @@
+.IFrameWrapper {
+  display: flex;
+  position: relative;
+  flex-wrap: nowrap;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 382px;
+  height: 100%;
+  max-height: 812px;
+  border: 3px solid var(--black);
+  border-radius: 44px;
+  overflow: hidden;
+  z-index: 1;
+  background: var(--sidebar);
+  box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.8), 0px 10px 24px 0px rgba(0, 0, 0, 0.6), 0px 0px 0.5px 0px rgba(0, 0, 0, 0.4);
+}
+
+.IFrame {
+  flex: 1;
+  position: relative;
+  overflow: hidden;
+  transition: opacity 1s;
+  opacity: 0.5;
+  &.Visible {
+    opacity: 1;
+  }
+  iframe {
+    background: var(--white);
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    height: calc(100% + 48px);
+    border: none;
+  }
+  img {
+    user-select: none;
+    pointer-events: none;
+    width: 100%;
+    height: 100%;
+  }
+}
+
+.Top {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  justify-content: center;
+  align-content: center;
+  width: 100%;
+  height: 50px;
+  background: #000;
+  position: relative;
+  z-index: 2;
+}
+
+.Bottom {
+  display: flex;
+  position: relative;
+  bottom: 0;
+  z-index: 2;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+  width: 100%;
+  height: 52px;
+  background: rgb(61, 61, 61);
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+}
+
+.Top,
+.Bottom {
+  img {
+    display: block;
+    position: relative;
+  }
+}
