@@ -116,6 +116,11 @@ img {
   border-radius: 4px;
 }
 
+.disabled {
+  opacity: 0.3;
+  pointer-events: none;
+}
+
 .loading {
   &:before {
     content: '';

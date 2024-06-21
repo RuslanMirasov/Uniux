@@ -1,4 +1,4 @@
-import { Title } from 'components/Typography';
+import { Title, TitleBox } from 'components/Typography';
 import { Button, GoBack, StartStopTest } from 'components/Buttons';
 import { ProjectSidebarContent } from 'components/ProjectPage';
 import { useAuth } from 'hooks';
@@ -47,13 +47,15 @@ const ProjectSidebar = ({ project = {} }) => {
       </ProjectSidebarContent>
 
       <ProjectSidebarContent>
-        {!isTestStarted ? (
-          <Button to={testUrl} full disabled={!hasTasks}>
-            Start test
-          </Button>
-        ) : (
-          <StartStopTest />
-        )}
+        <TitleBox className={!hasTasks && 'disabled'}>
+          {!isTestStarted ? (
+            <Button to={testUrl} full>
+              Start test
+            </Button>
+          ) : (
+            <StartStopTest />
+          )}
+        </TitleBox>
       </ProjectSidebarContent>
     </aside>
   );

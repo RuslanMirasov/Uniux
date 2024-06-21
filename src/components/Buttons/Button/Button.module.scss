@@ -59,7 +59,8 @@ $btn_small_padding: 0px 10px;
     }
   }
 
-  &:disabled {
+  &:disabled,
+  &.Disabled {
     opacity: 0.3;
     pointer-events: none;
   }

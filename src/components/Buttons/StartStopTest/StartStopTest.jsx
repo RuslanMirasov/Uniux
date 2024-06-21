@@ -1,11 +1,9 @@
-import { useLocation } from 'react-router-dom';
+import { useQuery } from 'hooks';
 import { Button } from '..';
 
 const StartStopTest = () => {
-  const location = useLocation();
-  const searchParams = new URLSearchParams(location.search);
-  const task = searchParams.get('task');
-  const status = searchParams.get('status');
+  const { task, status } = useQuery();
+
   return (
     <>
       {!status || status === 'done' || status === 'fail' ? (
@@ -14,7 +12,7 @@ const StartStopTest = () => {
         </Button>
       ) : (
         <Button variant="red" to="?task=1&status=fail" full>
-          STOP TASK {task}
+          Stop Task {task}
         </Button>
       )}
     </>
