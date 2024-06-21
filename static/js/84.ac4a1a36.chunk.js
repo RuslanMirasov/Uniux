@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunkuniux=self.webpackChunkuniux||[]).push([[84],{3312:function(e,n,r){r.r(n);var s=r(131),u=r(1063),c=r(4250),i=r(184);n.default=function(){return(0,i.jsx)(i.Fragment,{children:(0,i.jsxs)(s.Yb,{children:[(0,i.jsx)(u.Z,{name:"confirm",color:"var(--green)"}),(0,i.jsx)(c.Dx,{tag:"h1",size:"h4",children:"Task completed"})]})})}}}]);
+//# sourceMappingURL=84.ac4a1a36.chunk.js.map
