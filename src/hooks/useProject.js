@@ -1,4 +1,5 @@
 import { useParams } from 'react-router-dom';
+import getPageInfoByUrl from 'utils/getPageInfoByUrl';
 import { createContext, useContext, useState, useEffect } from 'react';
 import { tasksOperations, projectOperation } from 'api';
 import { useAuth } from 'hooks';
@@ -8,6 +9,7 @@ const ProjectContext = createContext();
 export const useProject = () => useContext(ProjectContext);
 
 export const ProjectProvider = ({ children }) => {
+  const { host, subdomen } = getPageInfoByUrl(window.location.href);
   const { user, isLoggedIn } = useAuth();
   const { project_id } = useParams();
   const [project, setProject] = useState({});
@@ -67,7 +69,7 @@ export const ProjectProvider = ({ children }) => {
         number: Number(tasks.length + 1),
         name: `Task ${Number(tasks.length + 1)}`,
         proto: '',
-        target: `${window.location.href}?task=${Number(tasks.length + 1)}&status=done`,
+        target: `${host}${subdomen}/test/${project_id}?task=${Number(tasks.length + 1)}&status=done`,
         description: '',
       };
       const newTask = await tasksOperations.addNew(newData);

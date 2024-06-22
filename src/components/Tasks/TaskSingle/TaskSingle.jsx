@@ -19,7 +19,7 @@ const TaskSingle = ({ task }) => {
 
   const debouncedUpdate = debounce(async (name, value) => {
     await update(name, value);
-  }, 300);
+  }, 1200);
 
   const handleChange = e => {
     const error = validateInput(e.target);
@@ -74,6 +74,7 @@ const TaskSingle = ({ task }) => {
               value={newValues.description}
               onChange={handleChange}
               autoComplete="off"
+              min="10"
               required
             />
           </Fieldset>

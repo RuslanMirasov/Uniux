@@ -7,6 +7,7 @@ const getPageInfoByUrl = url => {
     subdomen: '',
     shereLink: null,
   };
+
   const separators = ['/project/', '/test/', '/session/', '/shere/'];
 
   const parts = url.split('/');
@@ -20,11 +21,11 @@ const getPageInfoByUrl = url => {
 
   for (const separator of separators) {
     if (url.includes(separator)) {
-      result.name = separator.replace(/\//g, ''); // Удаляем знаки / по бокам
+      result.name = separator.replace(/\//g, '');
       const subdomen = window.location.pathname.split(separator)[0] || '';
 
       result.subdomen = subdomen;
-      result.shereLink = `${host}${subdomen}${separator}${result.id}`; // Удаляем знаки / по бокам
+      result.shereLink = `${host}${subdomen}${separator}${result.id}`;
       break;
     }
   }
