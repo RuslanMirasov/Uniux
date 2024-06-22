@@ -1,30 +1,12 @@
-import { useState } from 'react';
-import { tasksOperations } from 'api';
 import { Button } from 'components/Buttons';
+import { useProject } from 'hooks';
 import css from './AddTaskForm.module.scss';
 
-const AddTaskForm = ({ number, projectId, onNewTaskAdd }) => {
-  const [loading, setLoading] = useState(false);
+const AddTaskForm = () => {
+  const { addNewTask, loading } = useProject();
 
-  const handleSubmit = async () => {
-    setLoading(true);
-    try {
-      const newData = {
-        project: projectId,
-        device: 'app',
-        number: Number(number + 1),
-        name: `Task ${Number(number + 1)}`,
-        proto: '',
-        target: `${window.location.href}#Task${Number(number + 1)}_done`,
-        description: '',
-      };
-      const newTask = await tasksOperations.addNew(newData);
-      onNewTaskAdd(newTask);
-    } catch (error) {
-      console.log(error);
-    } finally {
-      setLoading(false);
-    }
+  const handleSubmit = () => {
+    addNewTask();
   };
 
   return (

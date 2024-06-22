@@ -1,7 +1,8 @@
 import { Title, TitleBox } from 'components/Typography';
 import { Button, GoBack } from 'components/Buttons';
 import { SidebarContent } from 'components/Sidebar';
-import { TasksWrapper } from 'components/Tasks';
+import { TasksCollection } from 'components/Tasks';
+import { AddTaskForm } from 'components/Forms';
 import { useProject } from 'hooks';
 
 const SidebarProject = () => {
@@ -16,7 +17,9 @@ const SidebarProject = () => {
           {project.name}
         </Title>
 
-        <TasksWrapper project={project} />
+        {tasks.length > 0 && <TasksCollection tasks={tasks} />}
+
+        <AddTaskForm />
       </SidebarContent>
 
       <SidebarContent>

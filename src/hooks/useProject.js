@@ -56,5 +56,28 @@ export const ProjectProvider = ({ children }) => {
     }
   }, [project, isLoggedIn, project_id, user._id]);
 
-  return <ProjectContext.Provider value={{ project, tasks, loading, error }}>{children}</ProjectContext.Provider>;
+  //============= ADD NEW TASK ===================
+
+  const addNewTask = async () => {
+    setLoading(true);
+    try {
+      const newData = {
+        project: project_id,
+        device: 'app',
+        number: Number(tasks.length + 1),
+        name: `Task ${Number(tasks.length + 1)}`,
+        proto: '',
+        target: `${window.location.href}?task=${Number(tasks.length + 1)}&status=done`,
+        description: '',
+      };
+      const newTask = await tasksOperations.addNew(newData);
+      setTasks(prev => [...prev, newTask]);
+    } catch (error) {
+      setError(error);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  return <ProjectContext.Provider value={{ project, tasks, addNewTask, loading, error }}>{children}</ProjectContext.Provider>;
 };
