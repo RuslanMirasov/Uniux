@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/Uniux/static/css/main.f4ebd1aa.css",
-    "main.js": "/Uniux/static/js/main.a25626da.js",
+    "main.js": "/Uniux/static/js/main.4058544d.js",
     "static/css/210.8c22b4d2.chunk.css": "/Uniux/static/css/210.8c22b4d2.chunk.css",
     "static/js/210.0323a5f8.chunk.js": "/Uniux/static/js/210.0323a5f8.chunk.js",
     "static/css/84.6b049424.chunk.css": "/Uniux/static/css/84.6b049424.chunk.css",
     "static/js/84.ac4a1a36.chunk.js": "/Uniux/static/js/84.ac4a1a36.chunk.js",
-    "static/css/769.53fe5447.chunk.css": "/Uniux/static/css/769.53fe5447.chunk.css",
-    "static/js/769.16972fd0.chunk.js": "/Uniux/static/js/769.16972fd0.chunk.js",
+    "static/css/968.ab1e4d0d.chunk.css": "/Uniux/static/css/968.ab1e4d0d.chunk.css",
+    "static/js/968.46c0dd05.chunk.js": "/Uniux/static/js/968.46c0dd05.chunk.js",
     "static/css/414.cb9b56b5.chunk.css": "/Uniux/static/css/414.cb9b56b5.chunk.css",
     "static/js/414.9795a240.chunk.js": "/Uniux/static/js/414.9795a240.chunk.js",
     "static/css/94.cb9b56b5.chunk.css": "/Uniux/static/css/94.cb9b56b5.chunk.css",
@@ -33,13 +33,13 @@
     "static/media/IF_bottom_small.svg": "/Uniux/static/media/IF_bottom_small.26dc8d1e94576c2d1ebe839c0a7fff3e.svg",
     "index.html": "/Uniux/index.html",
     "main.f4ebd1aa.css.map": "/Uniux/static/css/main.f4ebd1aa.css.map",
-    "main.a25626da.js.map": "/Uniux/static/js/main.a25626da.js.map",
+    "main.4058544d.js.map": "/Uniux/static/js/main.4058544d.js.map",
     "210.8c22b4d2.chunk.css.map": "/Uniux/static/css/210.8c22b4d2.chunk.css.map",
     "210.0323a5f8.chunk.js.map": "/Uniux/static/js/210.0323a5f8.chunk.js.map",
     "84.6b049424.chunk.css.map": "/Uniux/static/css/84.6b049424.chunk.css.map",
     "84.ac4a1a36.chunk.js.map": "/Uniux/static/js/84.ac4a1a36.chunk.js.map",
-    "769.53fe5447.chunk.css.map": "/Uniux/static/css/769.53fe5447.chunk.css.map",
-    "769.16972fd0.chunk.js.map": "/Uniux/static/js/769.16972fd0.chunk.js.map",
+    "968.ab1e4d0d.chunk.css.map": "/Uniux/static/css/968.ab1e4d0d.chunk.css.map",
+    "968.46c0dd05.chunk.js.map": "/Uniux/static/js/968.46c0dd05.chunk.js.map",
     "414.cb9b56b5.chunk.css.map": "/Uniux/static/css/414.cb9b56b5.chunk.css.map",
     "414.9795a240.chunk.js.map": "/Uniux/static/js/414.9795a240.chunk.js.map",
     "94.cb9b56b5.chunk.css.map": "/Uniux/static/css/94.cb9b56b5.chunk.css.map",
@@ -54,6 +54,6 @@
   },
   "entrypoints": [
     "static/css/main.f4ebd1aa.css",
-    "static/js/main.a25626da.js"
+    "static/js/main.4058544d.js"
   ]
 }
