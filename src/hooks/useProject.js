@@ -3,6 +3,7 @@ import getPageInfoByUrl from 'utils/getPageInfoByUrl';
 import { createContext, useContext, useState, useEffect } from 'react';
 import { tasksOperations, projectOperation } from 'api';
 import { useAuth } from 'hooks';
+import { usePopup } from 'contexts/PopupContext';
 
 const ProjectContext = createContext();
 
@@ -11,11 +12,23 @@ export const useProject = () => useContext(ProjectContext);
 export const ProjectProvider = ({ children }) => {
   const { host, subdomen } = getPageInfoByUrl(window.location.href);
   const { user, isLoggedIn } = useAuth();
+  const { popupOpen } = usePopup();
   const { project_id } = useParams();
   const [project, setProject] = useState({});
   const [tasks, setTasks] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
+
+  //============= SHOW ERRORS ===================
+  useEffect(() => {
+    try {
+      if (error) {
+        popupOpen('error', `Error ${error.response.status}`, error.response.data.message);
+      }
+    } finally {
+      setError(null);
+    }
+  }, [error, popupOpen]);
 
   //============= FETCHT PROJECT AND TASKS TO PROJECT ===================
   useEffect(() => {
@@ -81,5 +94,17 @@ export const ProjectProvider = ({ children }) => {
     }
   };
 
-  return <ProjectContext.Provider value={{ project, tasks, addNewTask, loading, error }}>{children}</ProjectContext.Provider>;
+  //============= UPDATE TASK ===================
+  const updateTakskByName = async (taskId, name, value) => {
+    setLoading(true);
+    try {
+      await tasksOperations.updateTask(taskId, name, { [name]: value.trim().replace(/\s+/g, ' ') });
+    } catch (error) {
+      setError(error);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  return <ProjectContext.Provider value={{ project, tasks, addNewTask, updateTakskByName, loading, error }}>{children}</ProjectContext.Provider>;
 };

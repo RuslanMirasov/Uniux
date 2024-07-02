@@ -234,7 +234,7 @@ const Accordeon = ({ size = 12, color = 'currentColor' }) => (
 
 const AccordeonPlay = ({ size = 12, color = 'currentColor' }) => (
   <svg width={size} height={size} viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <path d="M5.57087 4.28571L7.28516 5.99999L5.57087 7.71428" stroke={color} stroke-linecap="round" strokeLinejoin="round" />
+    <path d="M5.57087 4.28571L7.28516 5.99999L5.57087 7.71428" stroke={color} strokeLinecap="round" strokeLinejoin="round" />
     <rect x="11.5" y="11.5" width="11" height="11" rx="2.5" transform="rotate(180 11.5 11.5)" stroke={color} />
   </svg>
 );

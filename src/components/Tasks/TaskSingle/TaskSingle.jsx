@@ -3,14 +3,16 @@ import { ChangeTaskNameForm, CopyLink, Fieldset } from 'components/Forms';
 import { InputRadio, InputText } from 'components/Forms/InputTypes';
 import { Text } from 'components/Typography';
 import { useState } from 'react';
-import { tasksOperations } from 'api';
 import { validateInput } from 'utils/formFunctions';
-import css from './TaskSingle.module.scss';
 import { debounce } from 'utils/debounce';
+import { useProject } from 'hooks';
+import css from './TaskSingle.module.scss';
 
-const TaskSingle = ({ task }) => {
-  const [loading, setLoading] = useState(false);
+const TaskSingle = ({ task, open = false }) => {
   const { _id, device, name, target, description, proto } = task;
+  const { updateTakskByName } = useProject();
+  const [loading, setLoading] = useState(false);
+
   const [newValues, setNewValues] = useState({
     device,
     proto,
@@ -18,8 +20,13 @@ const TaskSingle = ({ task }) => {
   });
 
   const debouncedUpdate = debounce(async (name, value) => {
-    await update(name, value);
-  }, 1200);
+    setLoading(true);
+    try {
+      await updateTakskByName(_id, name, value);
+    } finally {
+      setLoading(false);
+    }
+  }, 500);
 
   const handleChange = e => {
     const error = validateInput(e.target);
@@ -35,22 +42,9 @@ const TaskSingle = ({ task }) => {
     }
   };
 
-  const update = async (name, value) => {
-    setLoading(true);
-    try {
-      await tasksOperations.updateTask(_id, name, { [name]: value.trim().replace(/\s+/g, ' ') });
-    } catch (error) {
-      console.log(error);
-    } finally {
-      setTimeout(() => {
-        setLoading(false);
-      }, 300);
-    }
-  };
-
   return (
     <li key={_id} className={`${css.TaskSingle} ${loading && css.Loading}`}>
-      <Accordeon title={<ChangeTaskNameForm value={name} taskId={_id} />}>
+      <Accordeon title={<ChangeTaskNameForm value={name} taskId={_id} />} open={open}>
         <form className={css.Form}>
           <Fieldset>
             <InputRadio type="radio" name="device" label="Browser" value="browser" checked={newValues.device === 'browser'} onChange={handleChange} />

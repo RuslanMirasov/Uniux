@@ -10,6 +10,11 @@
       transform: rotate(0deg);
     }
   }
+  &.Lock {
+    .Button {
+      transform: rotate(0deg);
+    }
+  }
 }
 
 .Head {
@@ -25,7 +30,6 @@
   gap: 12px;
 
   svg {
-    width: 12px;
     color: var(--grey);
   }
 }
@@ -54,7 +58,6 @@
   cursor: pointer;
   svg {
     color: var(--grey);
-    width: 8px;
   }
 }
 

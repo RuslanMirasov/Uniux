@@ -1,35 +1,29 @@
 import { useState } from 'react';
+import { useProject } from 'hooks';
 import css from './ChangeTaskNameForm.module.scss';
-import { tasksOperations } from 'api';
 
 const ChangeTaskNameForm = ({ taskId, value }) => {
+  const { updateTakskByName } = useProject();
   const [taskName, setTaskName] = useState(value);
-  const [loading, setLoading] = useState(false);
   const [oldName, setOldName] = useState(value);
+  const [loading, setLoading] = useState(false);
 
-  const updateName = async name => {
-    setLoading(true);
-    try {
-      await tasksOperations.updateTask(taskId, 'name', { name: name });
-    } catch (error) {
-      console.log(error);
-    } finally {
-      setTimeout(() => {
-        setLoading(false);
-      }, 300);
-    }
-  };
-
-  const handleNameChange = newName => {
+  const handleNameChange = async newName => {
     if (oldName.trim() === newName.trim() || newName === '') {
       setTaskName(oldName);
       return;
     }
+    setLoading(true);
     setOldName(newName.trim().replace(/\s+/g, ' '));
     setTaskName(newName.trim().replace(/\s+/g, ' '));
 
     const currentTaskName = taskName.trim().replace(/\s+/g, ' ');
-    updateName(currentTaskName);
+
+    try {
+      await updateTakskByName(taskId, 'name', currentTaskName);
+    } finally {
+      setLoading(false);
+    }
   };
 
   const handleChange = e => {

@@ -1,0 +1,14 @@
+.TaskSingleInfo {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  position: relative;
+}
+
+.TaskDescription {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  width: 100%;
+  padding-left: 35px;
+}
