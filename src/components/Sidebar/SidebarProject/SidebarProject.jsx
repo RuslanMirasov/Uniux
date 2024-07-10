@@ -3,10 +3,13 @@ import { Button, GoBack } from 'components/Buttons';
 import { SidebarContent } from 'components/Sidebar';
 import { TasksCollection } from 'components/Tasks';
 import { AddTaskForm } from 'components/Forms';
+import { CopyLink } from 'components/Forms';
+import getPageInfoByUrl from 'utils/getPageInfoByUrl';
 import { useProject } from 'hooks';
 
 const SidebarProject = () => {
   const { project, tasks } = useProject();
+  const { host, subdomen } = getPageInfoByUrl(window.location.href);
 
   return (
     <>
@@ -20,6 +23,8 @@ const SidebarProject = () => {
         {tasks.length > 0 && <TasksCollection tasks={tasks} />}
 
         <AddTaskForm />
+
+        <CopyLink value={`${host}${subdomen}/test/${project._id}`} />
       </SidebarContent>
 
       <SidebarContent>

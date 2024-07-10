@@ -11,7 +11,7 @@ const StartStopTest = ({ tasks }) => {
 
   useEffect(() => {
     if (status === 'done' || status === 'fail') {
-      console.log('Пишем в базу');
+      // console.log('Пишем в базу');
     }
   }, [status]);
 
