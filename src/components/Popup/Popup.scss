@@ -138,6 +138,9 @@ $info_width: 400px;
         opacity: 1;
       }
     }
+    &.type-policy {
+      max-width: 420px;
+    }
 
     @media screen and (min-width: 1280px) {
       padding: $popup_padding;

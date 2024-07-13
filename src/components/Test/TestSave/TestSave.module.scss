@@ -1,0 +1,34 @@
+.TestSave {
+  display: flex;
+  width: 100%;
+  max-width: 320px;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+  text-align: center;
+  margin: 30px auto;
+  &.Saving {
+    &:before {
+      content: '';
+      display: block;
+      width: 54px;
+      height: 54px;
+      border-radius: 54px;
+      border-left: 2px solid var(--white);
+      border-top: 2px solid var(--white);
+      border-right: 2px solid rgba(0, 0, 0, 0);
+      border-bottom: 2px solid rgba(0, 0, 0, 0);
+      animation: roll 0.5s linear infinite;
+    }
+  }
+}
+
+//ANIMATIONS
+@keyframes roll {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}

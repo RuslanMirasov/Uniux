@@ -21,6 +21,12 @@ const updateViews = async (id, params) => {
   return response.data;
 };
 
+//-------------- UPDATE NAME ------------------------
+const updateName = async (id, params) => {
+  const response = await axios.put(`projects/name/${id}`, params);
+  return response.data;
+};
+
 //-------------- ADD NEW PROJECT ------------------------
 const addNew = async params => {
   const response = await axios.post(`projects`, params);
@@ -32,6 +38,7 @@ const projectOperation = {
   addNew,
   getById,
   updateViews,
+  updateName,
 };
 
 export default projectOperation;

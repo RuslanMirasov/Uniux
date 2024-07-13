@@ -245,6 +245,38 @@ const AccordeonArrow = ({ size = 12, color = 'currentColor' }) => (
   </svg>
 );
 
+const Pen = ({ size = 12, color = 'currentColor' }) => (
+  <svg width={size} height={size} viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path
+      d="M4.28488 10.4914L0.427734 11.5714L1.50773 7.71432L8.57059 0.685749C8.65039 0.60411 8.74579 0.539242 8.85096 0.494956C8.95622 0.450669 9.06928 0.427856 9.18345 0.427856C9.29762 0.427856 9.41068 0.450669 9.51593 0.494956C9.62111 0.539242 9.71651 0.60411 9.79631 0.685749L11.3134 2.21146C11.3938 2.29114 11.4575 2.38595 11.5011 2.49039C11.5446 2.59485 11.567 2.70688 11.567 2.82003C11.567 2.93319 11.5446 3.04522 11.5011 3.14967C11.4575 3.25413 11.3938 3.34893 11.3134 3.42861L4.28488 10.4914Z"
+      stroke={color}
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+  </svg>
+);
+
+const Done = ({ size = 22 }) => (
+  <svg width={size} height={size} viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path
+      d="M18.0003 0.856934H6.00028C3.15996 0.856934 0.857422 3.15948 0.857422 5.99979V17.9998C0.857422 20.8402 3.15996 23.1426 6.00028 23.1426H18.0003C20.8407 23.1426 23.1431 20.8402 23.1431 17.9998V5.99979C23.1431 3.15948 20.8407 0.856934 18.0003 0.856934Z"
+      fill="#0D99FF"
+    />
+    <path d="M17.0006 8.14258L10.1434 16.714L6.71484 14.1426" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+  </svg>
+);
+
+const Fail = ({ size = 22 }) => (
+  <svg width={size} height={size} viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path
+      d="M16.9231 0H5.07692C2.27302 0 0 2.27302 0 5.07692V16.9231C0 19.7271 2.27302 22 5.07692 22H16.9231C19.7271 22 22 19.7271 22 16.9231V5.07692C22 2.27302 19.7271 0 16.9231 0Z"
+      fill="#A22626"
+    />
+    <path d="M6.00015 6.27793L16.0005 16.277" stroke="white" strokeWidth="2" strokeLinecap="round" />
+    <path d="M15.9945 5.99992L6.34314 16.338" stroke="white" strokeWidth="2" strokeLinecap="round" />
+  </svg>
+);
+
 const Icon = ({ name, color = 'currentColor', ...props }) => {
   return (
     <>
@@ -265,6 +297,9 @@ const Icon = ({ name, color = 'currentColor', ...props }) => {
       {name === 'accordeon' && <Accordeon color={color} {...props} />}
       {name === 'accordeon-play' && <AccordeonPlay color={color} {...props} />}
       {name === 'accordeon-arrow' && <AccordeonArrow color={color} {...props} />}
+      {name === 'pen' && <Pen color={color} {...props} />}
+      {name === 'done' && <Done {...props} />}
+      {name === 'fail' && <Fail {...props} />}
     </>
   );
 };

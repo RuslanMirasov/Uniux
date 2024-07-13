@@ -13,3 +13,4 @@ export { default as SearchForm } from './SearchForm/SearchForm';
 export { default as SortForm } from './SortForm/SortForm';
 export { default as CopyLink } from './CopyLink/CopyLink';
 export { default as ChangeTaskNameForm } from './ChangeTaskNameForm/ChangeTaskNameForm';
+export { default as ChangeProjectNameForm } from './ChangeProjectNameForm/ChangeProjectNameForm';

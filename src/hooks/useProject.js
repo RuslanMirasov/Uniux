@@ -75,14 +75,16 @@ export const ProjectProvider = ({ children }) => {
 
   const addNewTask = async () => {
     setLoading(true);
+    const taskCurrentNumber = tasks.length > 0 ? Number(tasks[tasks.length - 1].number) + 1 : 1;
+
     try {
       const newData = {
         project: project_id,
         device: 'app',
-        number: Number(tasks.length + 1),
-        name: `Task ${Number(tasks.length + 1)}`,
+        number: taskCurrentNumber,
+        name: `Task ${taskCurrentNumber}`,
         proto: '',
-        target: `${host}${subdomen}/test/${project_id}?task=${Number(tasks.length + 1)}&status=done`,
+        target: `${host}${subdomen}/test/${project_id}?task=${taskCurrentNumber}&status=done`,
         description: '',
       };
       const newTask = await tasksOperations.addNew(newData);
@@ -94,7 +96,7 @@ export const ProjectProvider = ({ children }) => {
     }
   };
 
-  //============= UPDATE TASK ===================
+  //============= UPDATE TASK BY NAME ===================
   const updateTakskByName = async (taskId, name, value) => {
     setLoading(true);
     try {
@@ -106,5 +108,22 @@ export const ProjectProvider = ({ children }) => {
     }
   };
 
-  return <ProjectContext.Provider value={{ project, tasks, addNewTask, updateTakskByName, loading, error }}>{children}</ProjectContext.Provider>;
+  //============= UPDATE PROJECT NAME ===================
+  const updateProjectName = async value => {
+    setLoading(true);
+
+    try {
+      await projectOperation.updateName(project_id, { name: value.trim().replace(/\s+/g, ' ') });
+    } catch (error) {
+      setError(error);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  return (
+    <ProjectContext.Provider value={{ project, tasks, addNewTask, updateTakskByName, updateProjectName, loading, error }}>
+      {children}
+    </ProjectContext.Provider>
+  );
 };

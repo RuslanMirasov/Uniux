@@ -1,18 +1,18 @@
 import Icon from 'components/Icon/Icon';
 import { timeAgo } from 'utils/timeAgo';
 import css from './ProjectSingle.module.scss';
-import placeholder from 'images/placeholder.jpg';
 import Image from 'components/Image/Image';
 import { Link } from 'components/Links';
 
 const ProjectSingle = ({ project }) => {
   const { _id, name, views, thumbnail, createdAt } = project;
-  const projectImage = thumbnail || placeholder;
 
   return (
     <li key={_id} className={css.Item}>
       <div className={css.Thumbnail}>
-        <Link to={`/project/${_id}`}>{projectImage && <Image src={projectImage} alt={name} />}</Link>
+        <Link to={`/project/${_id}`}>
+          <Image src={thumbnail} alt={name} />
+        </Link>
       </div>
       <h3 className={css.Title}>
         <Link to={`/project/${_id}`}>{name}</Link>

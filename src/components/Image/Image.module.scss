@@ -9,6 +9,7 @@
   position: absolute;
   img {
     opacity: 1;
+    transition: 0.3s;
   }
   &.Loading {
     img {

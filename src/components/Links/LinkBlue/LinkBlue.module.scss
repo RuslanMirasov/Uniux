@@ -7,6 +7,7 @@
   font-weight: inherit;
   position: relative;
   will-change: transform;
+  cursor: pointer;
   &:after {
     content: '';
     width: 100%;

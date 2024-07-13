@@ -1,8 +1,10 @@
 import { useState } from 'react';
+import placeholder from 'images/placeholder.jpg';
 import css from './Image.module.scss';
 
 const Image = ({ src, alt }) => {
   const [loading, setLoading] = useState(true);
+  const projectImage = src || placeholder;
 
   const handleImageLoad = () => {
     setLoading(false);
@@ -10,7 +12,7 @@ const Image = ({ src, alt }) => {
 
   return (
     <div className={`${css.Image} ${loading && css.Loading}`}>
-      <img src={src} alt={alt} onLoad={handleImageLoad} />
+      <img src={projectImage} alt={alt} onLoad={handleImageLoad} />
     </div>
   );
 };

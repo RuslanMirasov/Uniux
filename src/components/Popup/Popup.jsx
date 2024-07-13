@@ -3,6 +3,7 @@ import { CloseButton } from 'components/Buttons';
 import { usePopup } from 'contexts/PopupContext';
 import PopupError from './PopupError';
 import PopupConfirm from './PopupConfirm';
+import PopupPolicy from './PopupPolicy';
 import './Popup.scss';
 
 const Popup = () => {
@@ -14,6 +15,7 @@ const Popup = () => {
     ${popupType === 'registration' ? 'type-registration' : ''} 
     ${popupType === 'error' ? 'type-error' : ''} 
     ${popupType === 'confirm' ? 'type-confirm' : ''} 
+    ${popupType === 'policy' ? 'type-policy' : ''} 
     ${isPopupLoading ? 'is-loading' : ''}`.trim();
 
   return ReactDOM.createPortal(
@@ -24,6 +26,7 @@ const Popup = () => {
             <CloseButton onClick={popupClose} />
             {popupType === 'error' && <PopupError title={popupTitle} text={popupText} />}
             {popupType === 'confirm' && <PopupConfirm title={popupTitle} text={popupText} />}
+            {popupType === 'policy' && <PopupPolicy />}
           </div>
         </div>
       )}

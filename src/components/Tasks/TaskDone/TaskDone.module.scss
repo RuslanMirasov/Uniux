@@ -1,0 +1,15 @@
+.TaskDone {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  width: 100%;
+  max-width: 340px;
+  margin: 0 auto;
+  align-items: center;
+  align-content: center;
+  margin-top: 20px;
+  span {
+    font-size: 20px;
+    font-weight: 700;
+  }
+}

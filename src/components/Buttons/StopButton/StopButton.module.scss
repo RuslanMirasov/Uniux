@@ -1,0 +1,36 @@
+.StopButton {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  width: 54px;
+  height: 54px;
+  border-radius: 54px;
+  background: rgba(232, 0, 0, 0.4);
+  position: absolute;
+  left: 30px;
+  bottom: 30px;
+  z-index: 5;
+  color: inherit;
+  border: none;
+  cursor: pointer;
+  &:before {
+    content: '';
+    display: block;
+    position: absolute;
+    z-index: 1;
+    border-radius: 54px;
+    width: 80%;
+    height: 80%;
+    background: var(--red);
+  }
+  span {
+    display: inline-block;
+    position: relative;
+    z-index: 2;
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 1;
+  }
+}

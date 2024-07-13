@@ -2,27 +2,33 @@ import { Title, TitleBox } from 'components/Typography';
 import { Button, GoBack } from 'components/Buttons';
 import { SidebarContent } from 'components/Sidebar';
 import { TasksCollection } from 'components/Tasks';
-import { AddTaskForm } from 'components/Forms';
+import { AddTaskForm, ChangeProjectNameForm } from 'components/Forms';
 import { CopyLink } from 'components/Forms';
 import getPageInfoByUrl from 'utils/getPageInfoByUrl';
-import { useProject } from 'hooks';
+import { useAuth, useProject } from 'hooks';
 
 const SidebarProject = () => {
+  const { isLoggedIn, user } = useAuth();
   const { project, tasks } = useProject();
   const { host, subdomen } = getPageInfoByUrl(window.location.href);
+  const isOwner = project?.owner?._id === user?._id || false;
 
   return (
     <>
       <SidebarContent>
         <GoBack />
 
-        <Title tag="h1" size="h2">
-          {project.name}
-        </Title>
+        {isLoggedIn && isOwner ? (
+          <ChangeProjectNameForm value={project.name} />
+        ) : (
+          <Title tag="h1" size="h2">
+            {project.name}
+          </Title>
+        )}
 
         {tasks.length > 0 && <TasksCollection tasks={tasks} />}
 
-        <AddTaskForm />
+        {isLoggedIn && isOwner && <AddTaskForm />}
 
         <CopyLink value={`${host}${subdomen}/test/${project._id}`} />
       </SidebarContent>
