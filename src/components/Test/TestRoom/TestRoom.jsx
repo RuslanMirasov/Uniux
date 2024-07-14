@@ -3,7 +3,8 @@ import { useSearchParams } from 'react-router-dom';
 import IFrame from 'components/IFrame/IFrame';
 import { useEffect } from 'react';
 import css from './TestRoom.module.scss';
-import Camera from 'components/Camera/Camera';
+// import Camera from 'components/Camera/Camera';
+import ScreenSaver from 'components/ScreenSaver/ScreenSaver';
 
 const TestRoom = ({ task, setStartTime, setEndTime }) => {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -30,7 +31,8 @@ const TestRoom = ({ task, setStartTime, setEndTime }) => {
       <div className={`${css.TestRoom} ${device === 'app' && css.Scrollbar && 'custom-scrollbar'}`}>
         <IFrame link={proto} name={name} device={device} setStartTime={setStartTime} />
       </div>
-      <Camera />
+      {/* <Camera /> */}
+      <ScreenSaver />
       <StopButton />
     </>
   );

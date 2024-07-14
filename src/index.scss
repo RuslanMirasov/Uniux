@@ -140,6 +140,7 @@ img {
     border-left: 1px solid var(--white);
     border-bottom: 1px solid var(--white);
     animation: roll 0.5s linear infinite;
+    z-index: 1;
   }
 }
 
