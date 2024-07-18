@@ -15,11 +15,13 @@ const TestWelcome = ({ setIsButtonDisabled }) => {
   useEffect(() => {
     const updateSessionEmail = email => {
       const existingSession = JSON.parse(localStorage.getItem('session'));
-      existingSession['user'] = {
-        email,
-        avatarUrl: isLoggedIn ? user.avatarUrl : avatarGenerate(email),
-      };
-      localStorage.setItem('session', JSON.stringify(existingSession));
+      if (existingSession) {
+        existingSession['user'] = {
+          email,
+          avatarUrl: isLoggedIn ? user.avatarUrl : avatarGenerate(email),
+        };
+        localStorage.setItem('session', JSON.stringify(existingSession));
+      }
     };
 
     if (email) {

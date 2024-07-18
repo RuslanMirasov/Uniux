@@ -32,11 +32,12 @@
   display: flex;
   width: 420px;
   position: relative;
-  height: 284px;
+  height: 254px;
   overflow: hidden;
   border-radius: 0px 0px 25px 25px;
   background: var(--grey-dark);
   img {
+    width: 100%;
     height: 100%;
   }
 }

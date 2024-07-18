@@ -10,4 +10,7 @@
   overflow-y: scroll;
   background: var(--sidebar);
   padding-bottom: 114px;
+  &.NoBtn {
+    padding-bottom: 0px;
+  }
 }

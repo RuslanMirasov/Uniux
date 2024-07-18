@@ -1,0 +1,96 @@
+.SessionCollection {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+}
+
+.SessionCollectionItem {
+  display: flex;
+  position: relative;
+  flex-wrap: wrap;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+  align-content: center;
+  cursor: pointer;
+  &:before {
+    content: '';
+    width: 200%;
+    height: 100%;
+    position: absolute;
+    left: 50%;
+    top: 0px;
+    background: var(--session-hover);
+    transform: translate(-50%, 0%);
+    z-index: 0;
+    transition: 0.3s;
+    opacity: 0;
+  }
+  &:hover {
+    &:before {
+      opacity: 1;
+    }
+  }
+}
+
+.Image {
+  display: block;
+  width: 50px;
+  height: 50px;
+  border-radius: 40px;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+  background: var(--grey-dark);
+}
+
+.Content {
+  display: flex;
+  position: relative;
+  z-index: 1;
+  flex-wrap: wrap;
+  width: calc(100% - 64px);
+  gap: 4px;
+  border-bottom: 1px solid var(--grey-dark);
+  padding: 10px 0px;
+  padding-right: 25px;
+}
+
+.Tasks {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  gap: 5px;
+}
+
+.Email {
+  font-size: 12px;
+  line-height: 1;
+  padding-bottom: 4px;
+  font-weight: 600;
+}
+
+.Date {
+  display: block;
+  width: 100%;
+  font-size: 9px;
+  line-height: 1;
+  font-weight: 500;
+  color: var(--grey);
+}
+
+.Icon {
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  width: 14px;
+  height: 14px;
+  border-radius: 14px;
+  z-index: 1;
+  position: absolute;
+  right: 5px;
+  top: 50%;
+  margin-top: -7px;
+}

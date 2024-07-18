@@ -1,7 +1,7 @@
 import { useParams } from 'react-router-dom';
 import getPageInfoByUrl from 'utils/getPageInfoByUrl';
 import { createContext, useContext, useState, useEffect } from 'react';
-import { tasksOperations, projectOperation } from 'api';
+import { tasksOperations, projectOperation, sessionsOperations } from 'api';
 import { useAuth } from 'hooks';
 import { usePopup } from 'contexts/PopupContext';
 
@@ -16,6 +16,7 @@ export const ProjectProvider = ({ children }) => {
   const { project_id } = useParams();
   const [project, setProject] = useState({});
   const [tasks, setTasks] = useState([]);
+  const [sessions, setSessions] = useState({});
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
@@ -37,8 +38,10 @@ export const ProjectProvider = ({ children }) => {
       try {
         const allTasks = await tasksOperations.getAll({ project: project_id });
         const currentProject = await projectOperation.getById(project_id);
+        const currentSessions = await sessionsOperations.getAll({ project: project_id });
         setTasks(allTasks);
         setProject(currentProject);
+        setSessions(currentSessions);
       } catch (error) {
         setError(error);
       } finally {
@@ -122,7 +125,7 @@ export const ProjectProvider = ({ children }) => {
   };
 
   return (
-    <ProjectContext.Provider value={{ project, tasks, addNewTask, updateTakskByName, updateProjectName, loading, error }}>
+    <ProjectContext.Provider value={{ project, tasks, sessions, addNewTask, updateTakskByName, updateProjectName, loading, error }}>
       {children}
     </ProjectContext.Provider>
   );

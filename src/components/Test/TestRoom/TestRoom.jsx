@@ -1,21 +1,31 @@
 import { StopButton } from 'components/Buttons';
 import { useSearchParams } from 'react-router-dom';
 import IFrame from 'components/IFrame/IFrame';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import css from './TestRoom.module.scss';
-// import Camera from 'components/Camera/Camera';
-import ScreenSaver from 'components/ScreenSaver/ScreenSaver';
+import Camera from 'components/Camera/Camera';
 
-const TestRoom = ({ task, setStartTime, setEndTime }) => {
+const TestRoom = ({ task, setStartTime, setEndTime, setIsCameraSaved }) => {
+  const [isIframeLoaded, setIsIframeLoaded] = useState(false);
+  const [isCameraLoaded, setIsCameraLoaded] = useState(false);
+  const [stopCameraRecord, setStopCameraRecord] = useState(false);
+  const [startCameraRecord, setStartCameraRecord] = useState(false);
   const [searchParams, setSearchParams] = useSearchParams();
   const { proto, name, device, target } = task;
+
+  useEffect(() => {
+    if (isIframeLoaded && isCameraLoaded) {
+      setStartTime(Number(new Date().getTime()));
+      setStartCameraRecord(true);
+    }
+  }, [isIframeLoaded, isCameraLoaded, setStartTime]);
 
   useEffect(() => {
     const handleMessage = event => {
       const data = event.data;
       if (data && data.type === 'UNIUX_TARGET' && target === data.target) {
-        const end = new Date().getTime();
-        setEndTime(end);
+        setEndTime(Number(new Date().getTime()));
+        setStopCameraRecord(true);
         const taskNumber = searchParams.get('task');
         setSearchParams({ task: taskNumber, status: 'done' });
       }
@@ -29,11 +39,15 @@ const TestRoom = ({ task, setStartTime, setEndTime }) => {
   return (
     <>
       <div className={`${css.TestRoom} ${device === 'app' && css.Scrollbar && 'custom-scrollbar'}`}>
-        <IFrame link={proto} name={name} device={device} setStartTime={setStartTime} />
+        <IFrame link={proto} name={name} device={device} setIsIframeLoaded={setIsIframeLoaded} />
       </div>
-      {/* <Camera /> */}
-      <ScreenSaver />
-      <StopButton />
+      <Camera
+        setIsCameraLoaded={setIsCameraLoaded}
+        stopCameraRecord={stopCameraRecord}
+        startCameraRecord={startCameraRecord}
+        setIsCameraSaved={setIsCameraSaved}
+      />
+      <StopButton setStopCameraRecord={setStopCameraRecord} />
     </>
   );
 };

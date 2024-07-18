@@ -1,11 +1,14 @@
 import { useSearchParams } from 'react-router-dom';
+import { updateSession } from 'utils/updateSession';
 import css from './StopButton.module.scss';
 
-const StopButton = () => {
+const StopButton = ({ setStopCameraRecord }) => {
   const [searchParams, setSearchParams] = useSearchParams();
   const handelClick = () => {
     const taskNumber = searchParams.get('task');
     setSearchParams({ task: taskNumber, status: 'fail' });
+    setStopCameraRecord(true);
+    updateSession('endTime', Number(new Date().getTime()));
   };
 
   return (

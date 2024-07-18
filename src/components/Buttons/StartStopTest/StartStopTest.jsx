@@ -10,12 +10,6 @@ const StartStopTest = ({ tasks }) => {
   const [taskCurrent, setTaskCurrent] = useState(0);
 
   useEffect(() => {
-    if (status === 'done' || status === 'fail') {
-      // console.log('Пишем в базу');
-    }
-  }, [status]);
-
-  useEffect(() => {
     if (task) {
       setTaskCurrent(Number(task) - 1);
     }

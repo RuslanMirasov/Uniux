@@ -8,7 +8,7 @@ const getPageInfoByUrl = url => {
     shereLink: null,
   };
 
-  const separators = ['/project/', '/test/', '/session/', '/shere/'];
+  const separators = ['/project/', '/test/', '/sessions/', '/shere/'];
 
   const parts = url.split('/');
   const objectIdPattern = /^[a-f\d]{24}$/i;

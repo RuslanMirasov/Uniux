@@ -4,7 +4,7 @@ import IframeTop from 'images/iframe_top.svg';
 import IframeBottomSmall from 'images/IF_bottom_small.svg';
 import imagePlaceholder from 'images/placeholder_mobil.jpg';
 
-const IFrame = ({ link, name, device = 'app', setStartTime }) => {
+const IFrame = ({ link, name, device = 'app', setIsIframeLoaded }) => {
   const [embedUrl, setEmbedUrl] = useState('');
   const [isLoading, setIsLoading] = useState(true);
 
@@ -22,9 +22,8 @@ const IFrame = ({ link, name, device = 'app', setStartTime }) => {
 
   const iframeOnLoad = () => {
     setIsLoading(false);
-    if (setStartTime) {
-      const currentTime = new Date().getTime();
-      setStartTime(currentTime);
+    if (setIsIframeLoaded) {
+      setIsIframeLoaded(true);
     }
   };
 

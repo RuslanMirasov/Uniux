@@ -6,9 +6,13 @@ import Image from 'components/Image/Image';
 import { useState, useEffect } from 'react';
 import { useNavigate, useSearchParams } from 'react-router-dom';
 import { TestRoom, TestSave, TestWelcome } from 'components/Test';
+import { updateSession } from 'utils/updateSession';
 
 const TestContent = () => {
   const [isButtonDisabled, setIsButtonDisabled] = useState(true);
+  const [isTestDone, setIsTestDone] = useState(false);
+  const [isCameraSaved, setIsCameraSaved] = useState(false);
+  const [isVideoSaved] = useState(true);
   const { project, tasks } = useProject();
   const { user, isLoggedIn } = useAuth();
   const { name, thumbnail } = project;
@@ -16,7 +20,6 @@ const TestContent = () => {
   const [status, setStatus] = useState('');
   const [searchParams, setSearchParams] = useSearchParams();
   const [btnText, setBtnText] = useState('Start Test');
-  const [saveResults, setSaveResults] = useState(false);
   const [startTime, setStartTime] = useState(null);
   const [endTime, setEndTime] = useState(null);
 
@@ -30,67 +33,44 @@ const TestContent = () => {
   }, []);
 
   useEffect(() => {
-    const existingResult = JSON.parse(localStorage.getItem('session'));
-    if (existingResult && startTime) {
-      existingResult['startTime'] = startTime;
-      localStorage.setItem('session', JSON.stringify(existingResult));
-    }
+    updateSession('startTime', startTime);
   }, [startTime]);
 
   useEffect(() => {
-    const existingResult = JSON.parse(localStorage.getItem('session'));
-    if (existingResult) {
-      existingResult['endTime'] = endTime;
-      localStorage.setItem('session', JSON.stringify(existingResult));
-    }
+    updateSession('endTime', endTime);
   }, [endTime]);
 
   useEffect(() => {
-    const existingResult = JSON.parse(localStorage.getItem('session'));
-    if (!existingResult['project'] || existingResult['project'] !== project._id) {
-      existingResult['project'] = project._id;
-      localStorage.setItem('session', JSON.stringify(existingResult));
-    }
+    updateSession('project', project._id);
   }, [project]);
 
   useEffect(() => {
-    const existingResult = JSON.parse(localStorage.getItem('session'));
-    if (existingResult) {
-      existingResult['status'] = status;
-      localStorage.setItem('session', JSON.stringify(existingResult));
-    }
-  }, [status]);
-
-  useEffect(() => {
-    const existingResult = JSON.parse(localStorage.getItem('session'));
+    const sessionUser = {};
     if (isLoggedIn) {
-      existingResult['user'] = {
-        email: user.email,
-        avatarUrl: user.avatarUrl,
-      };
-      localStorage.setItem('session', JSON.stringify(existingResult));
+      sessionUser['email'] = user.email;
+      sessionUser['avatarUrl'] = user.avatarUrl;
     }
+    updateSession('user', sessionUser);
   }, [user, isLoggedIn]);
 
   useEffect(() => {
-    const existingResult = JSON.parse(localStorage.getItem('session'));
-    console.log(tasks[currentTaskIndex]);
-    existingResult['task'] = {
+    const sessionTask = {
       id: tasks[currentTaskIndex]?._id,
       number: tasks[currentTaskIndex]?.number,
       name: tasks[currentTaskIndex]?.name,
       device: tasks[currentTaskIndex]?.device,
       description: tasks[currentTaskIndex]?.description,
     };
-    localStorage.setItem('session', JSON.stringify(existingResult));
+    updateSession('task', sessionTask);
   }, [tasks, currentTaskIndex]);
 
   useEffect(() => {
+    updateSession('status', status);
     switch (status) {
       case 'pause':
         setBtnText('К заданию');
-        setStartTime(null);
-        setEndTime(null);
+        updateSession('camera', '');
+        setIsCameraSaved(false);
         break;
       case 'done':
       case 'fail':
@@ -119,11 +99,11 @@ const TestContent = () => {
 
       if (tasks.length === Number(taskNumber) && (status === 'done' || status === 'fail')) {
         setBtnText('Посмотреть результаты');
-        setSaveResults(true);
+        setIsTestDone(true);
         setIsButtonDisabled(true);
       }
     }
-  }, [tasks, searchParams, status]);
+  }, [tasks, searchParams, status, user.email]);
 
   const updateURL = (taskIndex, status) => {
     const taskNumber = tasks[taskIndex].number;
@@ -132,7 +112,7 @@ const TestContent = () => {
 
   const handleSteps = () => {
     if (tasks.length === 0) return;
-    if (saveResults) {
+    if (isTestDone) {
       navigate('/');
       return;
     }
@@ -167,10 +147,13 @@ const TestContent = () => {
         </div>
         {!status && <TestWelcome setIsButtonDisabled={setIsButtonDisabled} />}
         {status === 'pause' && <TaskDescription task={tasks[currentTaskIndex]} />}
-        {(status === 'done' || status === 'fail') && <TaskDone status={status} setEndTime={setEndTime} />}
+        {(status === 'done' || status === 'fail') && (
+          <>
+            <TaskDone status={status} />
+            <TestSave setIsButtonDisabled={setIsButtonDisabled} isTestDone={isTestDone} isCameraSaved={isCameraSaved} isVideoSaved={isVideoSaved} />
+          </>
+        )}
       </div>
-
-      {saveResults && <TestSave setIsButtonDisabled={setIsButtonDisabled} />}
 
       <div className={css.Bottom}>
         <Button full disabled={isButtonDisabled} onClick={handleSteps}>
@@ -179,7 +162,7 @@ const TestContent = () => {
       </div>
     </div>
   ) : (
-    <TestRoom task={tasks[currentTaskIndex]} setStartTime={setStartTime} setEndTime={setEndTime} />
+    <TestRoom task={tasks[currentTaskIndex]} setStartTime={setStartTime} setEndTime={setEndTime} setIsCameraSaved={setIsCameraSaved} />
   );
 };
 

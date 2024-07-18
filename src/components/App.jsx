@@ -12,6 +12,7 @@ const Home = lazy(() => import('pages/Home'));
 const Done = lazy(() => import('pages/Done'));
 const Project = lazy(() => import('pages/Project'));
 const Test = lazy(() => import('pages/Test'));
+const Sessions = lazy(() => import('pages/Sessions'));
 const Login = lazy(() => import('pages/Login'));
 const Registration = lazy(() => import('pages/Registration'));
 const PasswordReset = lazy(() => import('pages/PasswordReset'));
@@ -34,6 +35,7 @@ const App = () => {
         <Route index element={<PrivateRoute element={Home} />} />
         <Route path="project/:project_id" element={<Project />} />
         <Route path="test/:project_id" element={<Test />} />
+        <Route path="sessions/:project_id" element={<Sessions />} />
         <Route path="project/:project_id/done" element={<Done />} />
         <Route path="login" element={<Login />} />
         <Route path="signup" element={<Registration />} />

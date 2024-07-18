@@ -1,0 +1,29 @@
+.TaskMarker {
+  display: flex;
+  min-height: 18px;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  background: var(--grey-dark);
+  color: var(--grey);
+  font-size: 10px;
+  line-height: 1.2;
+  font-weight: 500;
+  padding: 0px 5px;
+  border-radius: 5px;
+  z-index: 1;
+  &.status--done {
+    background: var(--green);
+    color: var(--black);
+  }
+  &.status--fail {
+    background: var(--red);
+    color: var(--white);
+  }
+  &.position--absolute {
+    position: absolute;
+    right: 0px;
+    top: 0px;
+  }
+}

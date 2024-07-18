@@ -277,6 +277,41 @@ const Fail = ({ size = 22 }) => (
   </svg>
 );
 
+const AccordeonPlaySession = ({ size = 14, color = 'currentColor' }) => (
+  <svg width={size} height={size} viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path
+      d="M5.01367 8.76443V5.23577C5.01367 4.82817 5.4881 4.57053 5.87415 4.76848L9.31508 6.5328C9.7123 6.73648 9.7123 7.26372 9.31508 7.46739L5.87415 9.23172C5.4881 9.42967 5.01367 9.17202 5.01367 8.76443Z"
+      stroke={color}
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+    <path
+      d="M0.609287 6.13916C0.577114 6.4001 0.560547 6.66587 0.560547 6.93552C0.560547 7.20516 0.577114 7.47094 0.609287 7.73188"
+      stroke={color}
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+    <path
+      d="M3.11523 1.7988C3.32513 1.64047 3.54701 1.49323 3.78053 1.35841C4.01405 1.22359 4.2525 1.10505 4.49457 1.00244"
+      stroke={color}
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+    <path
+      d="M1.06836 4.42939C1.17096 4.18732 1.2895 3.94887 1.42433 3.71535C1.55915 3.48183 1.70638 3.25995 1.86472 3.05005"
+      stroke={color}
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+    <path
+      d="M7.01233 0.5C10.5618 0.5 13.4392 3.41015 13.4392 7C13.4392 10.5899 10.5618 13.5 7.01233 13.5C4.56637 13.5 2.43954 12.1181 1.35352 10.0841"
+      stroke={color}
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+  </svg>
+);
+
 const Icon = ({ name, color = 'currentColor', ...props }) => {
   return (
     <>
@@ -295,6 +330,7 @@ const Icon = ({ name, color = 'currentColor', ...props }) => {
       {name === 'views' && <Views color={color} {...props} />}
       {name === 'copy' && <Copy color={color} {...props} />}
       {name === 'accordeon' && <Accordeon color={color} {...props} />}
+      {name === 'accordeon-play-session' && <AccordeonPlaySession color={color} {...props} />}
       {name === 'accordeon-play' && <AccordeonPlay color={color} {...props} />}
       {name === 'accordeon-arrow' && <AccordeonArrow color={color} {...props} />}
       {name === 'pen' && <Pen color={color} {...props} />}
