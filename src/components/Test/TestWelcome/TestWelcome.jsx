@@ -3,9 +3,9 @@ import { Text, Title, TitleBox } from 'components/Typography';
 import { Form, Input } from 'components/Forms';
 import { LinkBlue } from 'components/Links';
 import { useState, useEffect } from 'react';
-import css from './TestWelcome.module.scss';
 import { usePopup } from 'contexts/PopupContext';
 import { avatarGenerate } from 'utils/avatarGenerate';
+import css from './TestWelcome.module.scss';
 
 const TestWelcome = ({ setIsButtonDisabled }) => {
   const { user, isLoggedIn } = useAuth();
