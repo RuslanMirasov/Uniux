@@ -1,4 +1,3 @@
-import IFrame from 'components/IFrame/IFrame';
 import Logo from 'components/Logo/Logo';
 import css from './SessionBody.module.scss';
 
