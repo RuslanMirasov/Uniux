@@ -1,23 +1,24 @@
-import { NavLink, useLocation } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 
 import Icon from 'components/Icon/Icon';
 import css from './GoBack.module.scss';
+import { Link } from 'components/Links';
 
-const GoBack = ({ to = '/' }) => {
+const GoBack = ({ to }) => {
   const location = useLocation();
   const [url, setUrl] = useState('/');
 
   useEffect(() => {
-    const newUrl = location.state?.from ?? to;
+    const newUrl = to ? to : location.state?.from;
     setUrl(newUrl);
   }, [location, to]);
 
   return (
-    <NavLink to={url} className={css.GoBack} state={{ from: `${location.pathname}${location.search}` }}>
+    <Link to={url} className={css.GoBack}>
       <Icon name="back" />
       <span>Back</span>
-    </NavLink>
+    </Link>
   );
 };
 

@@ -3,11 +3,16 @@ import moment from 'moment';
 import Image from 'components/Image/Image';
 import { TaskMarker } from 'components/Tasks';
 import { useAuth, useProject } from 'hooks';
+import { Link } from 'components/Links';
+import getPageInfoByUrl from 'utils/getPageInfoByUrl';
+import { useParams } from 'react-router-dom';
 import css from './SessionCollection.module.scss';
 
 const SessionCollection = () => {
-  const { sessions: { collection = [] } = {}, tasks = [] } = useProject();
+  const { sessions = [], tasks = [] } = useProject();
+  const { host, subdomen } = getPageInfoByUrl(window.location.href);
   const { BASE } = useAuth();
+  const { project_id } = useParams();
 
   const formatDate = isoDate => {
     return moment(isoDate).format('D MMMM YYYY');
@@ -19,16 +24,18 @@ const SessionCollection = () => {
     let currentGroup = [];
     let currentEmail = null;
 
-    sessions.forEach(session => {
-      if (session.user.email !== currentEmail) {
-        if (currentGroup.length > 0) {
-          groupedSessions.push(currentGroup);
+    if (sessions && sessions.length > 0) {
+      sessions.forEach(session => {
+        if (session.user.email !== currentEmail) {
+          if (currentGroup.length > 0) {
+            groupedSessions.push(currentGroup);
+          }
+          currentGroup = [];
+          currentEmail = session.user.email;
         }
-        currentGroup = [];
-        currentEmail = session.user.email;
-      }
-      currentGroup.push(session);
-    });
+        currentGroup.push(session);
+      });
+    }
 
     if (currentGroup.length > 0) {
       groupedSessions.push(currentGroup);
@@ -62,7 +69,7 @@ const SessionCollection = () => {
     return group;
   };
 
-  const groupedSessions = groupSessionsSequentially(collection);
+  const groupedSessions = groupSessionsSequentially(sessions);
 
   return (
     <ul className={css.SessionCollection}>
@@ -71,26 +78,30 @@ const SessionCollection = () => {
         const completeGroup = addMissingTasks([...group], tasks);
 
         return (
-          <li key={groupIndex} className={css.SessionCollectionItem}>
-            <div className={css.Image}>
-              <Image
-                src={completeGroup[0].user.avatarUrl.includes('http') ? completeGroup[0].user.avatarUrl : `${BASE}${completeGroup[0].user.avatarUrl}`}
-              />
-            </div>
-            <div className={css.Content}>
-              <span className={css.Date}>{formatDate(completeGroup[0].createdAt)}</span>
-              <span className={css.Email}>{completeGroup[0].user.email}</span>
-              <ul className={css.Tasks}>
-                {completeGroup.map(session => (
-                  <li key={session._id}>
-                    <TaskMarker status={session.status} number={session.task.number} />
-                  </li>
-                ))}
-              </ul>
-              <div className={css.Icon}>
-                <Icon name="accordeon-play-session" />
+          <li key={groupIndex}>
+            <Link to={`${host}${subdomen}/sessions/${project_id}`} className={css.SessionCollectionItem}>
+              <div className={css.Image}>
+                <Image
+                  src={
+                    completeGroup[0].user.avatarUrl.includes('http') ? completeGroup[0].user.avatarUrl : `${BASE}${completeGroup[0].user.avatarUrl}`
+                  }
+                />
               </div>
-            </div>
+              <div className={css.Content}>
+                <span className={css.Date}>{formatDate(completeGroup[0].createdAt)}</span>
+                <span className={css.Email}>{completeGroup[0].user.email}</span>
+                <ul className={css.Tasks}>
+                  {completeGroup.map(session => (
+                    <li key={session._id}>
+                      <TaskMarker status={session.status} number={session.task.number} />
+                    </li>
+                  ))}
+                </ul>
+                <div className={css.Icon}>
+                  <Icon name="accordeon-play-session" />
+                </div>
+              </div>
+            </Link>
           </li>
         );
       })}

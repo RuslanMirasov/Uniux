@@ -1,5 +1,5 @@
 import { Title, TitleBox } from 'components/Typography';
-import { Button, GoBack } from 'components/Buttons';
+import { Button, ButtonsList, GoBack } from 'components/Buttons';
 import { SidebarContent } from 'components/Sidebar';
 import { TasksCollection } from 'components/Tasks';
 import { AddTaskForm, ChangeProjectNameForm } from 'components/Forms';
@@ -9,14 +9,14 @@ import { useAuth, useProject } from 'hooks';
 
 const SidebarProject = () => {
   const { isLoggedIn, user } = useAuth();
-  const { project, tasks } = useProject();
+  const { project, tasks, sessions } = useProject();
   const { host, subdomen } = getPageInfoByUrl(window.location.href);
   const isOwner = project?.owner?._id === user?._id || false;
 
   return (
     <>
       <SidebarContent>
-        <GoBack />
+        <GoBack to="/" />
 
         {isLoggedIn && isOwner ? (
           <ChangeProjectNameForm value={project.name} />
@@ -24,6 +24,15 @@ const SidebarProject = () => {
           <Title tag="h1" size="h2">
             {project.name}
           </Title>
+        )}
+
+        {sessions?.length > 0 && (
+          <ButtonsList>
+            <Button to={`${host}${subdomen}/sessions/${project._id}`} size="small" variant="border">
+              Export session
+            </Button>
+            <Button size="small">Share</Button>
+          </ButtonsList>
         )}
 
         {tasks.length > 0 && <TasksCollection tasks={tasks} />}

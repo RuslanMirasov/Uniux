@@ -36,6 +36,7 @@ const App = () => {
         <Route path="project/:project_id" element={<Project />} />
         <Route path="test/:project_id" element={<Test />} />
         <Route path="sessions/:project_id" element={<Sessions />} />
+        <Route path="sessions/:project_id/task/:task_number" element={<Sessions />} />
         <Route path="project/:project_id/done" element={<Done />} />
         <Route path="login" element={<Login />} />
         <Route path="signup" element={<Registration />} />

@@ -13,4 +13,7 @@
   &.NoBtn {
     padding-bottom: 0px;
   }
+  &::-webkit-scrollbar-track {
+    background-color: var(--main) !important;
+  }
 }

@@ -9,6 +9,7 @@ const Sidebar = () => {
     <aside className={`${css.Sidebar} custom-scrollbar ${name === 'sessions' && css.NoBtn}`}>
       {name === 'project' && <SidebarProject />}
       {name === 'sessions' && <SidebarSession />}
+      {name === 'session' && <SidebarSession />}
     </aside>
   );
 };
